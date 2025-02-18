@@ -1,4 +1,4 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import { EventCardList } from "../components/EventCardList";
 import { useNavigate } from "react-router";
 
@@ -16,7 +16,6 @@ export const Home = () => {
         spacing={2}
         padding={4}
       >
-        <Typography variant="body1">10 Events</Typography>
         <Button variant="contained" color="primary" onClick={handleCreateEvent}>
           Create Event
         </Button>
