@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 
 interface RowValueProps {
   label: string;
-  value: string;
+  value: string | number;
 }
 
 export const RowValue = ({ label, value }: RowValueProps) => {

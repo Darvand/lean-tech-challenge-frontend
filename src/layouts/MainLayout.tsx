@@ -1,8 +1,18 @@
-import { AppBar, Box, Button, Container, Typography } from "@mui/material";
+import { useAuth0 } from "@auth0/auth0-react";
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  Stack,
+  Typography,
+} from "@mui/material";
 
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 
 export const MainLayout = () => {
+  const { logout } = useAuth0();
+  const navigate = useNavigate();
   return (
     <Container maxWidth={false} disableGutters>
       <AppBar position="static">
@@ -15,7 +25,17 @@ export const MainLayout = () => {
           }}
         >
           <Typography variant="h6">Event Management</Typography>
-          <Button color="inherit">Login</Button>
+          <Stack direction="row" spacing={2}>
+            <Button
+              color="inherit"
+              onClick={() => navigate("/", { replace: true })}
+            >
+              Home
+            </Button>
+            <Button color="inherit" onClick={() => logout()}>
+              Logout
+            </Button>
+          </Stack>
         </Box>
       </AppBar>
       <Outlet />

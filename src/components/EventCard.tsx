@@ -8,11 +8,12 @@ import {
 } from "@mui/material";
 import EventRoundedIcon from "@mui/icons-material/EventRounded";
 import { useNavigate } from "react-router";
+import { Event } from "../models/event.model";
 
-export const EventCard = () => {
+export const EventCard = ({ event }: { event: Event }) => {
   const navigate = useNavigate();
   const handleCardClick = () => {
-    navigate("/event/1");
+    navigate(`/event/${event.id}`);
   };
   return (
     <Card variant="elevation" sx={{ width: 1 }}>
@@ -28,21 +29,25 @@ export const EventCard = () => {
               <EventRoundedIcon sx={{ fontSize: 48 }} color="primary" />
               <Stack direction="column" spacing={2}>
                 <Stack direction="row" spacing={1} alignItems="center">
-                  <Typography variant="h5">Event 1</Typography>
-                  <Chip label="Draft" color="info" sx={{ minWidth: 64 }} />
+                  <Typography variant="h5">{event.title}</Typography>
+                  <Chip
+                    label={event.status}
+                    color="info"
+                    sx={{ minWidth: 64 }}
+                  />
                 </Stack>
                 <Typography variant="subtitle1" color="textSecondary">
-                  Description about the event
+                  {event.description}
                 </Typography>
               </Stack>
             </Stack>
             <Stack direction="column" spacing={2}>
-              <Typography variant="body1">May 12 - May 25</Typography>
+              <Typography variant="body1">{event.date}</Typography>
               <Stack direction="row" spacing={1} alignItems="center">
                 <Typography variant="body1" color="textSecondary">
                   Tickets:
                 </Typography>
-                <Chip label="45" />
+                <Chip label={event.ticketsAvailable} />
               </Stack>
             </Stack>
           </Stack>
